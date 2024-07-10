@@ -33,6 +33,10 @@ public class RandomAnnotationProcessor {
         RandomDate annotationDate = field.getAnnotation(RandomDate.class);
         Long min = annotationDate.min();
         Long max = annotationDate.max();
+        if (max < min) {
+          min = annotationDate.max();
+          max = annotationDate.min();
+        }
 
         try {
           field.setAccessible(true); // чтобы можно было изменять финальные поля
