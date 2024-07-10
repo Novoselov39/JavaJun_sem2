@@ -1,5 +1,10 @@
 package ru.gb.lesson2.hw;
 
+import lombok.Data;
+import ru.gb.lesson2.anno.AnnotationsMain;
+import ru.gb.lesson2.anno.lib.ObjectCreator;
+
+import java.nio.channels.Pipe;
 import java.util.Date;
 
 public class Homework {
@@ -20,24 +25,21 @@ public class Homework {
    * Unix-время - количество милисекунд, прошедших с 1 января 1970 года по UTC-0.
    */
 
-  // FIXME: Заставить аннотацию ставится только над полями
-  @interface RandomDate {
 
-    long min() default 1704067200000L; // 1 января 2024 года UTC0
-
-    long max() default 1735689600000L; // 1 января 2025 года UTC0
-
-//    String zone() default "Moscow";
-
-  }
 
   public static void main(String[] args) {
-    long t = 1704067200000L;
+//    long t = 1704067200000L;
+    AnnotationsMain.Person rndPerson = ObjectCreator.createObj(AnnotationsMain.Person.class);
 
-    Date date = new Date(t);
-    System.out.println(date);
+    System.out.println("date = " + rndPerson.getDate());
 
 //    LocalDate.ofInstant(date.toInstant(), ZoneOffset.of("Moscow"))
   }
 
+
+
+
+
 }
+
+
